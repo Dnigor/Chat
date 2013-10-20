@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<input data-bind="value: name">
+<input type="button" data-bind="click: addUser" />
+
+<h1>Users:</h1>
+<ul data-bind="foreach: users">
+    <li data-bind="text: $data.Name">
+</ul>
+
+
+@section scripts {
+<script type="text/javascript">
+    
+    var config = {
+        ajaxService: chat.AjaxService,
+        usersApiUrl: '@Url.RouteUrl(new { httproute = "UsersApi", controller = "User", action = "GetUsers" })',
+        addUserApiUrl: '@Url.RouteUrl(new { httproute = "UsersApi", controller = "User", action = "AddUser" })'
+    };
+
+    var vm = new chat.UserList(config);
+    ko.applyBindings(vm);
+</script>
+}

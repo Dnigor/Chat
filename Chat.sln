@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Web", "Chat.Web\Chat.Web.csproj", "{B221B856-7FDB-452C-9970-6944DDFEC3AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Tests", "Chat.Tests\Chat.Tests.csproj", "{5F662831-8262-4BD1-B157-67746D45C9B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Core", "Chat.Core\Chat.Core.csproj", "{31748DF9-E40E-4ECD-8505-BC821AA89647}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B221B856-7FDB-452C-9970-6944DDFEC3AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B221B856-7FDB-452C-9970-6944DDFEC3AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B221B856-7FDB-452C-9970-6944DDFEC3AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B221B856-7FDB-452C-9970-6944DDFEC3AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F662831-8262-4BD1-B157-67746D45C9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F662831-8262-4BD1-B157-67746D45C9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F662831-8262-4BD1-B157-67746D45C9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F662831-8262-4BD1-B157-67746D45C9B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31748DF9-E40E-4ECD-8505-BC821AA89647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31748DF9-E40E-4ECD-8505-BC821AA89647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31748DF9-E40E-4ECD-8505-BC821AA89647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31748DF9-E40E-4ECD-8505-BC821AA89647}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
