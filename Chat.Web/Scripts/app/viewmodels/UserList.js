@@ -19,6 +19,6 @@ chat.UserList = function (config) {
         self.users(data);
     }
 
-    new chat.PollingService(config.pollApiUrl, _callback)
+    new chat.PollingService(config.pollApiUrl, _callback);
 
 };
