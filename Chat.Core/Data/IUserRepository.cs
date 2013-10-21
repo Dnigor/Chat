@@ -13,14 +13,18 @@ namespace Chat.Core.Data
 {
     public interface IUserRepository
     {
+        event Update OnChanged; 
         IEnumerable<User> GetUsers();
         User GetUserById(Guid id);        
         void AddUser(User user);
         void DeleteUser(Guid id);
     }
 
+    public delegate void Update();
+
     public class CacheRepository : IUserRepository
     {
+        public event Update OnChanged; 
         public CacheRepository()
         {
             Users = new BlockingCollection<User>();
@@ -44,7 +48,8 @@ namespace Chat.Core.Data
 
         public void AddUser(User user) 
         {           
-            Users.Add(user);            
+            Users.Add(user);
+            OnChanged();
         }
 
         public void DeleteUser(Guid id) 

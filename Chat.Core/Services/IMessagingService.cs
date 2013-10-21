@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chat.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,6 @@ namespace Chat.Core.Infrastructure
 {
     public interface IMessagingService
     {
-        void SendMessage(Guid id);
-        void SendMessageToAll();
+        void SendMessage(Message message);        
     }
 }

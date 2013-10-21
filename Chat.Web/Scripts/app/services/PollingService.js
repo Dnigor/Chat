@@ -9,7 +9,7 @@ chat.PollingService = function (url, cb) {
         .fail(function () {
 
         })
-        .always(setTimeout(_poll, 5000));
+        .always(_poll);
     }
 
     _poll();

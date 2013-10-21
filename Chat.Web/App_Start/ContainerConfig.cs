@@ -3,6 +3,7 @@ using Autofac.Extras.CommonServiceLocator;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Chat.Core.Data;
+using Chat.Core.Services;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Chat.App_Start
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             builder.RegisterType<CacheRepository>().As<IUserRepository>().SingleInstance();
+            builder.RegisterType<PollingService>().As<IPollingService>();
 
             var container = builder.Build();
 

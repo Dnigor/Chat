@@ -20,18 +20,6 @@ namespace Chat.Controllers.Api
             _repository = repository;
         }
 
-        [AcceptVerbs("GET")]
-        public HttpResponseMessage GetUsers()
-        {
-            var users = _repository.GetUsers();
-            var json = JsonConvert.SerializeObject(users);
-
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(json)
-            };
-        }
-
         [AcceptVerbs("POST")]
         public HttpResponseMessage AddUser(User user)
         {

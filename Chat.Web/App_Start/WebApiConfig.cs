@@ -16,6 +16,12 @@ namespace Chat
             );
 
             config.Routes.MapHttpRoute(
+                name: "PollApi",
+                routeTemplate: "api/poll/{action}",
+                defaults: new { controller = "poll" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
