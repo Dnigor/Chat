@@ -2,3 +2,4 @@ C:\Users\Dgorobet\Documents\Visual Studio 2012\Projects\Chat\Chat.Core\bin\Debug
 C:\Users\Dgorobet\Documents\Visual Studio 2012\Projects\Chat\Chat.Core\bin\Debug\Chat.Core.pdb
 C:\Users\Dgorobet\Documents\Visual Studio 2012\Projects\Chat\Chat.Core\obj\Debug\Chat.Core.dll
 C:\Users\Dgorobet\Documents\Visual Studio 2012\Projects\Chat\Chat.Core\obj\Debug\Chat.Core.pdb
+C:\Users\Dgorobet\documents\visual studio 2012\Projects\Chat\Chat.Core\obj\Debug\Chat.Core.csprojResolveAssemblyReference.cache

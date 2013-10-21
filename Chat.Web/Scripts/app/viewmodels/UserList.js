@@ -6,26 +6,19 @@ chat.UserList = function (config) {
     self.users = ko.observableArray([]);
     self.name = ko.observable();
 
-    self.addUser = function () {
-        _load();
+    self.addUser = function () {        
         var user = { Id: null, Name: self.name() };
-        config.ajaxService.postJSON(config.addUserApiUrl, ko.toJSON(user))
+        chat.AjaxService.postJSON(config.addUserApiUrl, ko.toJSON(user))
             .done(function (data) {
                 self.users.push(user);
             });
     }
 
-    function _load() {
-        config.ajaxService.getJSON(config.usersApiUrl)
-            .done(function (data) {
-                if (data)
-                    self.users(data);
-            })
-            .fail(function () {
+    function _callback(data){
+      if (data)
+        self.users(data);
+    }
 
-            });
-    };
-
-    _load();
+    chat.PollingService(config.usersApiUrl, _callback)
 
 };

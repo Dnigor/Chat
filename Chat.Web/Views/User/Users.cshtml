@@ -15,8 +15,7 @@
 @section scripts {
 <script type="text/javascript">
     
-    var config = {
-        ajaxService: chat.AjaxService,
+    var config = {        
         usersApiUrl: '@Url.RouteUrl(new { httproute = "UsersApi", controller = "User", action = "GetUsers" })',
         addUserApiUrl: '@Url.RouteUrl(new { httproute = "UsersApi", controller = "User", action = "AddUser" })'
     };

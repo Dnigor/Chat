@@ -17,7 +17,6 @@ namespace Chat
     {
         protected void Application_Start()
         {
-
             ContainerConfig.RegisterContainer();
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
