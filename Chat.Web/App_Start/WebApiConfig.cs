@@ -15,11 +15,11 @@ namespace Chat
                 defaults: new { controller = "user" }
             );
 
-            config.Routes.MapHttpRoute(
-                name: "PollApi",
-                routeTemplate: "api/poll/{action}",
-                defaults: new { controller = "poll" }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "PollApi",
+            //    routeTemplate: "api/poll/{id}",
+            //    defaults: new { controller = "poll" }
+            //);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -26,6 +26,7 @@ namespace Chat.App_Start
 
             builder.RegisterType<CacheRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<PollingService>().As<IPollingService>();
+            builder.RegisterType<MessagingService>().As<IMessagingService>();
 
             var container = builder.Build();
 

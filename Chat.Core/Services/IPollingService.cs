@@ -16,7 +16,7 @@ namespace Chat.Core.Services
 
     public interface IPollingService
     {
-        IEnumerable<User> GetStatus();
+        IEnumerable<User> Get();
     }
 
     public class PollingService : IPollingService
@@ -31,7 +31,7 @@ namespace Chat.Core.Services
             _repository.OnChanged += OnChanged;
         }
 
-        public IEnumerable<User> GetStatus() 
+        public IEnumerable<User> Get() 
         {
             try
             {

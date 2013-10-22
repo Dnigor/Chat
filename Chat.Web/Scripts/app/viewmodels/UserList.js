@@ -7,7 +7,7 @@ chat.UserList = function (config) {
     self.name = ko.observable();
 
     self.addUser = function () {        
-        var user = { Id: null, Name: self.name() };
+        var user = { Name: self.name() };
         chat.AjaxService.postJSON(config.addUserApiUrl, ko.toJSON(user))
             .done(function (data) {
                 self.users.push(user);

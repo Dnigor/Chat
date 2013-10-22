@@ -19,9 +19,9 @@ namespace Chat.Controllers.Api
         }
 
         [AcceptVerbs("GET")]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get(string id)
         {
-            var data = _pollingService.GetStatus();
+            var data = _pollingService.Get();
             var json = JsonConvert.SerializeObject(data);
 
             return new HttpResponseMessage(HttpStatusCode.OK)
