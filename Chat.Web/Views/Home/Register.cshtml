@@ -1,0 +1,8 @@
+﻿@using Chat.Core.Entities
+@model User
+    <form class="navbar-form navbar-left" role="search" method="post" action="@Url.Action("register","home")">
+      <div class="form-group">
+        <input type="text" name="Name" class="form-control" placeholder="Your name">
+      </div>
+      <button type="submit" class="btn btn-default">Go!</button>
+    </form>

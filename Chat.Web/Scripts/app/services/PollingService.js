@@ -1,17 +1,15 @@
 ﻿chat = chat || {};
 
-chat.PollingService = function (url, cb) {
+chat.PollingService = function (ajaxService, url, cb) {
     var self = this;
 
-    function _poll() {
-        chat.AjaxService.getJSON(url, {id: "trr"})
+    self.poll = function() {
+        ajaxService.getJSON(url)
         .done(cb)
         .fail(function () {
 
         })
-        .always(_poll);
+        .always(self.poll);
     }
 
-    _poll();
-    
 };

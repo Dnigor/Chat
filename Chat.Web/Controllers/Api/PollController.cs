@@ -19,10 +19,10 @@ namespace Chat.Controllers.Api
         }
 
         [AcceptVerbs("GET")]
-        public HttpResponseMessage Get(string id)
+        public HttpResponseMessage Get(string name)
         {
-            var data = _pollingService.Get();
-            var json = JsonConvert.SerializeObject(data);
+            var data = _pollingService.Get(name);
+            var json = JsonConvert.SerializeObject(data, new JsonSerializerSettings() { ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver() });
 
             return new HttpResponseMessage(HttpStatusCode.OK)
             {

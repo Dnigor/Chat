@@ -2,6 +2,7 @@
 using Autofac.Extras.CommonServiceLocator;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Chat.Core.Commands;
 using Chat.Core.Data;
 using Chat.Core.Services;
 using Microsoft.Practices.ServiceLocation;
@@ -24,9 +25,15 @@ namespace Chat.App_Start
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
+            builder.RegisterType<CommandHandlerFactory>().As<ICommandHandlerFactory>().InstancePerHttpRequest();
+            builder.RegisterAssemblyTypes(typeof(ICommand).Assembly).AsClosedTypesOf(typeof(ICommandHandler<>));
+            //builder.RegisterType<GetUsersCommandHandler>().As<ICommandHandler<GetUsersCommand>>();
+
             builder.RegisterType<CacheRepository>().As<IUserRepository>().SingleInstance();
-            builder.RegisterType<PollingService>().As<IPollingService>();
-            builder.RegisterType<MessagingService>().As<IMessagingService>();
+            builder.RegisterType<CommandService>().As<ICommandService>();
+            builder.RegisterType<PollingService>().As<IPollingService>().InstancePerHttpRequest();
+           
+            
 
             var container = builder.Build();
 

@@ -12,19 +12,15 @@ using System.Web;
 namespace Chat.Core.Data
 {
     public interface IUserRepository
-    {
-        event Update OnChanged; 
+    {       
         IEnumerable<User> GetUsers();
-        User GetUserById(Guid id);        
+        User GetUserByName(string name);        
         void AddUser(User user);
-        void DeleteUser(Guid id);
+        void DeleteUser(string name);
     }
 
-    public delegate void Update();
-
     public class CacheRepository : IUserRepository
-    {
-        public event Update OnChanged; 
+    {        
         public CacheRepository()
         {
             Users = new BlockingCollection<User>();
@@ -41,20 +37,19 @@ namespace Chat.Core.Data
             return Users;
         }
 
-        public User GetUserById(Guid id) 
+        public User GetUserByName(string name) 
         {
-            return Users.Where(u => u.Id == id).FirstOrDefault();
+            return Users.Where(u => u.Name == name).FirstOrDefault();
         }
 
         public void AddUser(User user) 
         {           
-            Users.Add(user);
-            OnChanged();
+            Users.Add(user);           
         }
 
-        public void DeleteUser(Guid id) 
+        public void DeleteUser(string name) 
         {
-            var user = GetUserById(id);
+            var user = GetUserByName(name);
           //  Users.Remove(user);
         }
     }

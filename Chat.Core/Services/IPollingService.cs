@@ -9,45 +9,30 @@ using System.Threading.Tasks;
 
 namespace Chat.Core.Services
 {
-    public class Status
-    {
-        public string Message { get; set; }
-    }
 
     public interface IPollingService
     {
-        IEnumerable<User> Get();
+        Response Get(string name);     
     }
 
     public class PollingService : IPollingService
-    {
-        private readonly IUserRepository _repository;
-        private AutoResetEvent _event;
+    {    
+        private readonly ICommandService _commandService;
+        private readonly AutoResetEvent _event = new AutoResetEvent(false);
 
-        public PollingService(IUserRepository repository)
-        {
-            _repository = repository;
-            _event = new AutoResetEvent(false);
-            _repository.OnChanged += OnChanged;
+        public PollingService(ICommandService commandService)
+        {                     
+            _commandService = commandService;          
         }
 
-        public IEnumerable<User> Get() 
-        {
-            try
-            {
-                _event.WaitOne();
-            }
-            finally 
-            {
-                _event.Reset();
-            }
-            return _repository.GetUsers();
+        public Response Get(string name) 
+        {           
+           _commandService.AddSubscriber(name, _event);
+           _event.WaitOne();                 
+            var response = _commandService.GetResponse(name);
+            return response;
         }
 
-        public void OnChanged()
-        {
-            _event.Set();
-        }
 
     }
 }

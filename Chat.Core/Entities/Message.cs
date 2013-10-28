@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Chat.Core.Entities
 {
     public enum MessageType{
-        GETUSERS,
-        ADDUSER
+        GETUSERS        
     };
 
     public class Message

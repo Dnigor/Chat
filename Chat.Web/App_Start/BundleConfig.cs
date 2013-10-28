@@ -19,7 +19,12 @@ namespace Chat
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/script/knockout").Include("~/scripts/knockout-{version}.js"));
-
+            bundles.Add(new ScriptBundle("~/script/bootstrap").Include("~/scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/script/utils").Include
+            (                
+                "~/scripts/knockout.mapping-latest.js",
+                "~/scripts/knockout.validation.js"               
+            ));
             bundles.Add(new ScriptBundle("~/script/app").IncludeDirectory("~/scripts/app", "*.js", true));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -27,7 +32,10 @@ namespace Chat
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/site.css",
+                "~/Content/bootstrap/bootstrap.css"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

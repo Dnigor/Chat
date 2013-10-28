@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.1.3\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -40,13 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ICommandHandlerFactory.cs" />
+    <Compile Include="Commands\GetUsersCommand.cs" />
+    <Compile Include="Commands\GetUsersCommandHandler.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\SendMessageCommand.cs" />
+    <Compile Include="Commands\SendMessageCommandHandler.cs" />
+    <Compile Include="Data\Data.cs" />
     <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Events\UserAdded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Message.cs" />
-    <Compile Include="Services\IMessagingService.cs" />
+    <Compile Include="Services\ICommandService.cs" />
     <Compile Include="Services\IPollingService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
