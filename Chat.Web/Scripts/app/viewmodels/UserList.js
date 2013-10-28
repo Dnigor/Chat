@@ -8,8 +8,12 @@ chat.UserList = function (config) {
     self.publicMessage = ko.observable();
     
     self.publicMessage.subscribe(function (value) {
-        var publicContent = $('#publicContent').text();
-        $('#publicContent').text(publicContent + '\r\n' + value);
+        var publicContent = $('#publicContent').val();
+        if (publicContent) 
+            $('#publicContent').val(publicContent + '\r\n' + value);        
+        else
+            $('#publicContent').val(value);
+
     });
     
     //self.name = ko.observable();
@@ -28,6 +32,7 @@ chat.UserList = function (config) {
         content  : self.sendTextbox()
       };
       config.ajaxService.postJSON(config.sendMessageApiUrl, sendMessageCommand);
+      self.sendTextbox('');
     }
 
     function _callback(data) {
