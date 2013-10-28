@@ -26,9 +26,10 @@ chat.UserList = function (config) {
     //        });
     //}
 
-    self.sendMessage = function () {
+    self.sendMessage = function (receiver) {
       var sendMessageCommand = {
-        sender   : config.name,                   
+        sender   : config.name,
+        receiver : receiver,
         content  : self.sendTextbox()
       };
       config.ajaxService.postJSON(config.sendMessageApiUrl, sendMessageCommand);
@@ -36,11 +37,7 @@ chat.UserList = function (config) {
     }
 
     function _callback(data) {
-        ko.mapping.fromJS(data, {}, self);
-        //if (data) {
-        //    self.users(data.Users);
-        //    self.publicContent(data.PublicContent);
-        //}
+        ko.mapping.fromJS(data, {}, self);      
     }
 
     var pollingService = new chat.PollingService(config.ajaxService, config.pollApiUrl, _callback);

@@ -4,3 +4,4 @@ C:\Users\Dgorobet\documents\visual studio 2012\Projects\Chat\Chat.Core\bin\Debug
 C:\Users\Dgorobet\documents\visual studio 2012\Projects\Chat\Chat.Core\bin\Debug\Autofac.xml
 C:\Users\Dgorobet\documents\visual studio 2012\Projects\Chat\Chat.Core\obj\Debug\Chat.Core.dll
 C:\Users\Dgorobet\documents\visual studio 2012\Projects\Chat\Chat.Core\obj\Debug\Chat.Core.pdb
+c:\Users\Dgorobet\Documents\Visual Studio 2012\Projects\Chat\Chat.Core\obj\Debug\Chat.Core.csprojResolveAssemblyReference.cache
