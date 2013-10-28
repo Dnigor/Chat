@@ -17,11 +17,10 @@ namespace Chat.Core.Commands
             _repository = repository;
         }
 
-        public Response Handle(GetUsersCommand command)
+        public dynamic Handle(GetUsersCommand command)
         {
             var users = _repository.GetUsers();
-            var response = new Response()
-            {
+            var response = new{
                 Users = users
             };
 

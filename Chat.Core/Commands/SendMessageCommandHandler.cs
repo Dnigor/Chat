@@ -10,15 +10,15 @@ namespace Chat.Core.Commands
     public class SendMessageCommandHandler : ICommandHandler<SendMessageCommand>
     {
   
-        public Response Handle(SendMessageCommand command)
+        public dynamic Handle(SendMessageCommand command)
         {
-            var response = new Response();
-            var content = string.Format("{0}: {1}", command.Sender, command.Content);
-
+            var content = string.Format("{0}: {1}", command.Sender, command.Content);             
+            dynamic response;
+            
             if (command.Receiver == null)
-                response.PublicContent = content;
-            else 
-                response.PrivateContent = content;
+                response = new { PublicMessage = content };
+            else
+                response = new { PrivateMessage = content };
             
             return response;
         }

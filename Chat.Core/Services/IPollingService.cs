@@ -12,7 +12,7 @@ namespace Chat.Core.Services
 
     public interface IPollingService
     {
-        Response Get(string name);     
+        dynamic Get(string name);     
     }
 
     public class PollingService : IPollingService
@@ -25,7 +25,7 @@ namespace Chat.Core.Services
             _commandService = commandService;          
         }
 
-        public Response Get(string name) 
+        public dynamic Get(string name) 
         {           
            _commandService.AddSubscriber(name, _event);
            _event.WaitOne();                 

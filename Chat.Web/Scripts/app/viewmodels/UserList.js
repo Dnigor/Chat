@@ -5,7 +5,13 @@ chat.UserList = function (config) {
 
     self.users       = ko.observableArray([]);
     self.sendTextbox = ko.observable();
-    self.publicContent = ko.observable();
+    self.publicMessage = ko.observable();
+    
+    self.publicMessage.subscribe(function (value) {
+        var publicContent = $('#publicContent').text();
+        $('#publicContent').text(publicContent + '\r\n' + value);
+    });
+    
     //self.name = ko.observable();
 
     //self.addUser = function () {        

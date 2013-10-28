@@ -9,6 +9,6 @@ namespace Chat.Core.Commands
 {
     public interface ICommandHandler<TCommand>
     {
-        Response Handle(TCommand command);
+        dynamic Handle(TCommand command);
     }
 }
