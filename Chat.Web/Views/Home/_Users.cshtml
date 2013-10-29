@@ -1,11 +1,11 @@
 ﻿<div class="panel panel-default">
   <div class="panel-heading">Users online:</div>
-  <div class="panel-body" style="height:356px;">
+  <div class="panel-body" style="height:306px;">
     <!-- ko foreach: users -->    
       <div class="btn-group">
         <button type="button" data-bind="text: name" class="btn btn-default dropdown-toggle" data-toggle="dropdown"></button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#" data-bind="click: $root.sendMessage.bind($data, name)">Send private message</a></li>          
+          <li><a href="#" data-bind="click: $root.createPrivateRoom.bind($data, name(), true)">Go to private room</a></li>          
         </ul>
       </div>
     <!-- /ko -->

@@ -5,7 +5,7 @@
 <div class="row">
 <div class="col-lg-12">
   <div class="col-lg-8">   
-      <textarea id="publicContent" style="width:582px;height:400px;resize:none" readonly></textarea>   
+      <textarea id="publicContent" style="width:582px;height:350px;resize:none" readonly></textarea>   
   </div>   
   <div class="col-lg-4">
      @Html.Partial("_Users")
@@ -17,26 +17,59 @@
     <div class="input-group" style="margin-left:15px; width:583px;">
       <input type="text" data-bind="value: sendTextbox" class="form-control">
       <span class="input-group-btn">
-        <button class="btn btn-default" data-bind="click: sendMessage.bind($data, null)" type="button">Send</button>
+        <button class="btn" data-bind="click: sendMessage" type="button">Send</button>
       </span>
     </div>
   </div>
 </div>
+<div class="row">
+   <div class="col-lg-8">
+    
+     <div class="panel panel-default" style="margin-left:15px;margin-top:10px;">
+       <div class="panel-heading" style="padding:7px;">
+          <span style="font-size:12px;">Private rooms</span>
+       </div>
+       <div class="panel-body" style="height:260px;padding:5px;">
+
+         <ul class="nav nav-pills" data-bind="foreach: privateRooms" style="font-size:12px;margin-bottom:5px;">   
+           <li data-bind="css: { active: name === $root.activeRoom().name }">
+             <a href="#" data-bind="click: $root.setActiveRoom.bind($data)">
+               <span data-bind="text: name"></span>
+               <span class="badge" data-bind="visible: unreadMessagesCount() > 0, text: unreadMessagesCount"></span>
+             </a>
+           </li>           
+         </ul>
+         
+         <!-- ko with: activeRoom -->  
+         <textarea data-bind="value: content" style="width:500px;height:170px;resize:none" readonly></textarea>
+         <div class="input-group" style="width:500px;">
+          <input type="text" data-bind="value: $root.sendPrivateTextbox" class="form-control input-sm">
+            <span class="input-group-btn">
+              <button class="btn btn-sm" data-bind="click: $root.sendPrivateMessage" type="button">Send</button>
+            </span>
+         </div>
+         <!-- /ko -->
+
+       </div>
+     </div>
+   </div>
+  
+   </div>
 </div>
+
 
 @section scripts {
 <script type="text/javascript">
     
-    var config = {
+    var config = {        
+        name: '@Model.Name',  
         ajaxService: new chat.AjaxService(),
-        name: '@Model.Name',
-        pollApiUrl: '@Url.Content("~/api/poll?name=" + Model.Name)',
+        pollApiUrl: '@Url.RouteUrl(new { httproute = "DefaultApi", controller = "Poll", action = "get" })',
         getUsersApiUrl: '@Url.RouteUrl(new { httproute = "CommandsApi", controller = "Commands", action = "getusers" })',
-        sendMessageApiUrl: '@Url.RouteUrl(new { httproute = "CommandsApi", controller = "Commands", action = "sendmessage" })',
-        addUserApiUrl: '@Url.RouteUrl(new { httproute = "UsersApi", controller = "User", action = "AddUser" })'
+        sendMessageApiUrl: '@Url.RouteUrl(new { httproute = "CommandsApi", controller = "Commands", action = "sendmessage" })',       
     };
 
-    var vm = new chat.UserList(config);
+    var vm = new chat.Main(config);
     ko.applyBindings(vm);
 </script>
 }

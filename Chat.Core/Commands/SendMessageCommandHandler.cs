@@ -16,9 +16,18 @@ namespace Chat.Core.Commands
             dynamic response;
             
             if (command.Receiver == null)
-                response = new { PublicMessage = content };
+                response = new { 
+                    PublicMessage = content 
+                };
             else
-                response = new { PrivateMessage = content };
+                response = new
+                {
+                    PrivateMessage = new
+                    {
+                        Sender = command.Sender,
+                        Content = content
+                    }
+                };
             
             return response;
         }

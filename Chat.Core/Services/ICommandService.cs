@@ -11,12 +11,7 @@ using System.Threading.Tasks;
 
 namespace Chat.Core.Services
 {
-    public class Response {
-        public IEnumerable<User> Users { get; set; }
-        public string PublicMessage { get; set; }
-        public string PrivateMessage { get; set; }
-    }
-
+  
     public interface ICommandService
     {
         void Execute<TCommand>(TCommand command) where TCommand: ICommand;
@@ -79,8 +74,11 @@ namespace Chat.Core.Services
 
         public void AddSubscriber(string sender, AutoResetEvent e)
         {
-            _events.Add(sender, e);
-            _responses.Add(sender, new object());
+            if (_events[sender] == null)
+            {
+                _events.Add(sender, e);
+                _responses.Add(sender, new object());
+            }
         }
 
         private void RemoveSubscriber(string sender)

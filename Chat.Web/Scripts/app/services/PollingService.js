@@ -1,10 +1,10 @@
 ﻿chat = chat || {};
 
-chat.PollingService = function (ajaxService, url, cb) {
+chat.PollingService = function (ajaxService, url, name, cb) {
     var self = this;
 
     self.poll = function() {
-        ajaxService.getJSON(url)
+        ajaxService.getJSON(url, {name: name})
         .done(cb)
         .fail(function () {
 

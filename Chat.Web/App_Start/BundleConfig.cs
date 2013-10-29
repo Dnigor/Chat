@@ -23,7 +23,8 @@ namespace Chat
             bundles.Add(new ScriptBundle("~/script/utils").Include
             (                
                 "~/scripts/knockout.mapping-latest.js",
-                "~/scripts/knockout.validation.js"               
+                "~/scripts/knockout.validation.js",
+                "~/scripts/linq.js"
             ));
             bundles.Add(new ScriptBundle("~/script/app").IncludeDirectory("~/scripts/app", "*.js", true));
 
