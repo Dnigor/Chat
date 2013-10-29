@@ -12,7 +12,7 @@ using System.Web;
 namespace Chat.Core.Data
 {
     public interface IUserRepository
-    {       
+    {
         IEnumerable<User> GetUsers();
         User GetUserByName(string name);        
         void AddUser(User user);
@@ -21,36 +21,49 @@ namespace Chat.Core.Data
 
     public class CacheRepository : IUserRepository
     {        
+        private static readonly object _syncObj = new object();
         public CacheRepository()
         {
-            Users = new BlockingCollection<User>();
+            Users = new List<User>();
         }
 
-        BlockingCollection<User> Users 
+        List<User> Users 
         {
-            get { return HttpRuntime.Cache["users"] as BlockingCollection<User>; }
+            get { return HttpRuntime.Cache["users"] as List<User>; }
             set { HttpRuntime.Cache["users"] = value; }        
         }
 
         public IEnumerable<User> GetUsers() 
         {
-            return Users;
+            lock (_syncObj)
+            {
+                return Users;
+            }
         }
 
         public User GetUserByName(string name) 
         {
-            return Users.Where(u => u.Name == name).FirstOrDefault();
+            lock (_syncObj)
+            {
+                return Users.Where(u => u.Name == name).FirstOrDefault();
+            }
         }
 
         public void AddUser(User user) 
-        {           
-            Users.Add(user);           
+        {
+            lock (_syncObj)
+            {
+                Users.Add(user);
+            }
         }
 
         public void DeleteUser(string name) 
         {
-            var user = GetUserByName(name);
-          //  Users.Remove(user);
+            lock (_syncObj)
+            {
+                var user = GetUserByName(name);
+                Users.Remove(user);
+            }
         }
     }
 }
