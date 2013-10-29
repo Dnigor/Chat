@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chat.Core.Commands
+namespace Chat.Core.Infrastructure
 {
     public enum CommandType 
     { 

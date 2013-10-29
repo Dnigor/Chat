@@ -4,6 +4,7 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Chat.Core.Commands;
 using Chat.Core.Data;
+using Chat.Core.Infrastructure;
 using Chat.Core.Services;
 using Microsoft.Practices.ServiceLocation;
 using System;
@@ -26,8 +27,7 @@ namespace Chat.App_Start
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             builder.RegisterType<CommandHandlerFactory>().As<ICommandHandlerFactory>().InstancePerHttpRequest();
-            builder.RegisterAssemblyTypes(typeof(ICommand).Assembly).AsClosedTypesOf(typeof(ICommandHandler<>));
-            //builder.RegisterType<GetUsersCommandHandler>().As<ICommandHandler<GetUsersCommand>>();
+            builder.RegisterAssemblyTypes(typeof(ICommand).Assembly).AsClosedTypesOf(typeof(ICommandHandler<>));           
 
             builder.RegisterType<CacheRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<CommandService>().As<ICommandService>();

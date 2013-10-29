@@ -1,6 +1,7 @@
 ﻿using Chat.Core.Commands;
 using Chat.Core.Data;
 using Chat.Core.Entities;
+using Chat.Core.Infrastructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;

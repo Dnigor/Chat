@@ -45,8 +45,7 @@ namespace Chat.Controllers.Api
     public class CommandRequest
     {
         public string Sender { get; set; }
-        public string Receiver { get; set; }
-        public CommandType Type { get; set; }
+        public string Receiver { get; set; }     
         public string Content { get; set; }
     }
 }
